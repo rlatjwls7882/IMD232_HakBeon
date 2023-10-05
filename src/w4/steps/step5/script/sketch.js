@@ -3,7 +3,10 @@ let liquid;
 
 function setup() {
   setCanvasContainer('canvas', 2, 1, true);
-  reset();
+
+  for (let i = 0; i < 9; i++)
+    movers[i] = new Mover((width / 10) * (i + 1), 0, random(0.5, 3));
+
   liquid = new Liquid(0, height / 2, width, height / 2, 0.1);
 }
 
@@ -22,15 +25,4 @@ function draw() {
     movers[ballNum].bounceEdges();
     movers[ballNum].display();
   }
-}
-
-// 마우스 클릭
-function mousePressed() {
-  if (isMouseInsideCanvas()) reset();
-}
-
-// 재시작
-function reset() {
-  for (let i = 0; i < 9; i++)
-    movers[i] = new Mover((width / 10) * (i + 1), 0, random(0.5, 3));
 }
