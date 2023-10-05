@@ -20,14 +20,14 @@ function draw() {
   rotate(angle);
 
   // 선
-  stroke(0);
-  strokeWeight(1);
   fill(127);
+  stroke(0);
+
+  strokeWeight(1);
   line(-lineLength / 2, 0, lineLength / 2, 0);
 
   // 원
   strokeWeight(2);
-  fill(127);
   circle(lineLength / 2, 0, 16);
   circle(-lineLength / 2, 0, 16);
 }
