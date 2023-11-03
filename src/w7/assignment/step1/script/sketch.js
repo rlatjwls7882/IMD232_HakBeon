@@ -16,6 +16,6 @@ function draw() { // 계속 반복
   traffic.run(); // 각각의 객체마다 위치, 속도, 가속도, 힘 설정
 }
 
-function mouseDragged() { // 마우스를 클릭하는 동안
+function mouseDragged() { // 마우스를 드래깅하는 동안
   traffic.addVehicle(mouseX, mouseY); // 새로운 객체 생성
 }
