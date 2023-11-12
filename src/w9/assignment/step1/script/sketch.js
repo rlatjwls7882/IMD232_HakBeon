@@ -52,7 +52,7 @@ function setup() {
   );
 
   ropeB = Composites.stack(width / 2, 50, 10, 1, 10, 10, function (x, y) {
-    return Bodies.circle(x, y, width / 25);
+    return Bodies.circle(x, y, 20);
   });
 
   Composites.chain(ropeB, 0.5, 0, -0.5, 0, {
