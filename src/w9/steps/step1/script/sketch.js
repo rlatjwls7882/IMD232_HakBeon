@@ -1,8 +1,3 @@
-// let Engine = Matter.Engine,
-//   Render = Matter.Render,
-//   Runner = Matter.Runner,
-//   Bodies = Matter.Bodies,
-//   Composite = Matter.Composite;
 let Engine = Matter.Engine;
 let Render = Matter.Render;
 let Runner = Matter.Runner;
