@@ -11,6 +11,10 @@ class Obj {
     for (let sonIdx = 0; sonIdx < this.length; sonIdx++) {
       this.objSon.push(new ObjSon(this.pos.x, this.pos.y));
     }
+
+    this.rad = width / 35;
+    this.isHover = false;
+    this.isDragging = false;
   }
 
   applyForce(force) {
@@ -20,7 +24,7 @@ class Obj {
 
   update() {
     this.vel.add(this.acc);
-    this.vel.limit(2);
+    this.vel.limit(1);
     this.pos.add(this.vel);
     this.acc.mult(0);
 
@@ -62,49 +66,40 @@ class Obj {
   }
 
   display() {
-    stroke(0, this.life);
+    noStroke();
     fill(127, this.life);
-    ellipse(this.pos.x, this.pos.y, width / 35);
+    ellipse(this.pos.x, this.pos.y, this.rad);
 
     for (let sonIdx = 0; sonIdx < this.length; sonIdx++) {
-      ellipse(this.objSon[sonIdx].pos.x, this.objSon[sonIdx].pos.y, width / 35);
+      ellipse(this.objSon[sonIdx].pos.x, this.objSon[sonIdx].pos.y, this.rad);
     }
   }
 
-  isDead() {
-    return this.life < 0;
-  }
-
-  // 아직 구현 안함(클릭)
   mouseMoved(mX, mY) {
     this.isHover =
-      (this.ballPos.x - mX) ** 2 + (this.ballPos.y - mY) ** 2 <= this.rad ** 2;
+      (this.pos.x - mX) ** 2 + (this.pos.y - mY) ** 2 <= this.rad ** 2;
   }
 
-  mousePressed(mX, mY) {
+  mousePressed() {
     if (this.isHover) {
       this.isDragging = true;
-      this.angleAcc = 0;
-      this.angleVel = 0;
-      this.draggingOffset.set(mX - this.ballPos.x, mY - this.ballPos.y);
+      this.vel.mult(0);
+      this.acc.mult(0);
     }
   }
 
   mouseDragged(mX, mY) {
     if (this.isDragging) {
-      const ballShouldBe = createVector(
-        mX - this.draggingOffset.x,
-        mY - this.draggingOffset.y
-      );
-      const angle = atan2(
-        ballShouldBe.y - this.pos.y,
-        ballShouldBe.x - this.pos.x
-      );
-      this.angle = angle;
+      this.pos.x = mX;
+      this.pos.y = mY;
     }
   }
 
   mouseReleased() {
     this.isDragging = false;
+  }
+
+  isDead() {
+    return this.life < 0;
   }
 }

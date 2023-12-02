@@ -3,7 +3,7 @@ let obj = [];
 function setup() {
   setCanvasContainer('canvas', 1, 1, true);
 
-  let objNum = random(3, 10);
+  let objNum = random(3, 8);
   for (let objIdx = 0; objIdx < objNum; objIdx++) {
     obj.push(new Obj(random(width), random(height)));
   }
@@ -23,5 +23,29 @@ function draw() {
       obj.splice(objIdx, 1);
       obj.push(new Obj(random(width), random(height)));
     }
+  }
+}
+
+function mouseMoved() {
+  for (let objIdx = 0; objIdx < obj.length; objIdx++) {
+    obj[objIdx].mouseMoved(mouseX, mouseY);
+  }
+}
+
+function mousePressed() {
+  for (let objIdx = 0; objIdx < obj.length; objIdx++) {
+    obj[objIdx].mousePressed();
+  }
+}
+
+function mouseDragged() {
+  for (let objIdx = 0; objIdx < obj.length; objIdx++) {
+    obj[objIdx].mouseDragged(mouseX, mouseY);
+  }
+}
+
+function mouseReleased() {
+  for (let objIdx = 0; objIdx < obj.length; objIdx++) {
+    obj[objIdx].mouseReleased();
   }
 }
