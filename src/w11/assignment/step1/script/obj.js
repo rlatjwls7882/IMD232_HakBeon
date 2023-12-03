@@ -6,7 +6,7 @@ class Obj {
     this.mass = 1;
     this.path = [];
     this.objSon = [];
-    this.length = random(1, 5);
+    this.length = random(0, 7);
     this.life = random(255, 500);
     for (let sonIdx = 0; sonIdx < this.length; sonIdx++) {
       this.objSon.push([this.pos.x, this.pos.y]);
