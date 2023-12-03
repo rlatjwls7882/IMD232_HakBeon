@@ -1,7 +1,7 @@
 let obj = [];
 
 function setup() {
-  setCanvasContainer('canvas', 1, 1, true);
+  createCanvas(windowWidth, windowHeight);
 
   let objNum = random(3, 8);
   for (let objIdx = 0; objIdx < objNum; objIdx++) {
@@ -17,10 +17,10 @@ function draw() {
   let size = 100;
   textSize(size);
 
-  if (mouseX < size * 2 && mouseY < size + 10) {
-    text('영어', 0, 10, size * 2, size + 10);
-  } else {
+  if (0 < mouseX && mouseX < size * 2 && 0 < mouseY && mouseY < size + 10) {
     text('한글', 0, 10, size * 2, size + 10);
+  } else {
+    text('영어', 0, 10, size * 2, size + 10);
   }
 
   for (let objIdx = 0; objIdx < obj.length; objIdx++) {
