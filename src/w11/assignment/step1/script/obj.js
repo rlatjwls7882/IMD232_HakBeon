@@ -9,7 +9,7 @@ class Obj {
     this.length = random(1, 5);
     this.life = random(255, 500);
     for (let sonIdx = 0; sonIdx < this.length; sonIdx++) {
-      this.objSon.push(new ObjSon(this.pos.x, this.pos.y));
+      this.objSon.push([this.pos.x, this.pos.y]);
     }
 
     this.rad = width / 35;
@@ -34,22 +34,13 @@ class Obj {
     for (let sonIdx = 0; sonIdx < this.length; sonIdx++) {
       const pos = this.path.length - (sonIdx + 1) * 10;
       if (pos > 0) {
-        this.objSon[sonIdx].pos.x = this.path[pos][0];
-        this.objSon[sonIdx].pos.y = this.path[pos][1];
+        this.objSon[sonIdx][0] = this.path[pos][0];
+        this.objSon[sonIdx][1] = this.path[pos][1];
       } else {
-        this.objSon[sonIdx].pos.x = this.path[0][0];
-        this.objSon[sonIdx].pos.y = this.path[0][1];
+        this.objSon[sonIdx][0] = this.path[0][0];
+        this.objSon[sonIdx][1] = this.path[0][1];
       }
     }
-  }
-
-  update_trace() {
-    // noFill();
-    // beginShape();
-    // for (let pathIdx = 0; pathIdx < this.path.length; pathIdx++) {
-    //   vertex(this.path[pathIdx][0], this.path[pathIdx][1]);
-    // }
-    // endShape();
   }
 
   infiniteEdge() {
@@ -71,7 +62,7 @@ class Obj {
     ellipse(this.pos.x, this.pos.y, this.rad);
 
     for (let sonIdx = 0; sonIdx < this.length; sonIdx++) {
-      ellipse(this.objSon[sonIdx].pos.x, this.objSon[sonIdx].pos.y, this.rad);
+      ellipse(this.objSon[sonIdx][0], this.objSon[sonIdx][1], this.rad);
     }
   }
 

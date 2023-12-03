@@ -12,6 +12,10 @@ function setup() {
 
 function draw() {
   background('white');
+  fill('cornflowerblue');
+  stroke(0);
+  textSize(100);
+  text('대충 텍스트', 0, 100);
 
   for (let objIdx = 0; objIdx < obj.length; objIdx++) {
     obj[objIdx].applyForce(p5.Vector.random2D().mult(0.1));
