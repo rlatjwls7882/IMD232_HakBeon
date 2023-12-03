@@ -12,10 +12,16 @@ function setup() {
 
 function draw() {
   background(image);
-  fill('cornflowerblue');
+  fill('white');
   stroke(0);
-  textSize(100);
-  text('대충 텍스트', 0, 100);
+  let size = 100;
+  textSize(size);
+
+  if (mouseX < size * 2 && mouseY < size + 10) {
+    text('영어', 0, 10, size * 2, size + 10);
+  } else {
+    text('한글', 0, 10, size * 2, size + 10);
+  }
 
   for (let objIdx = 0; objIdx < obj.length; objIdx++) {
     obj[objIdx].applyForce(p5.Vector.random2D().mult(0.1));
