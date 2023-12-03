@@ -7,11 +7,11 @@ function setup() {
   for (let objIdx = 0; objIdx < objNum; objIdx++) {
     obj.push(new Obj(random(width), random(height)));
   }
-  background('white');
+  image = loadImage('script/background.png');
 }
 
 function draw() {
-  background('white');
+  background(image);
   fill('cornflowerblue');
   stroke(0);
   textSize(100);
