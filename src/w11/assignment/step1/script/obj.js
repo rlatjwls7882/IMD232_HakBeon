@@ -12,7 +12,7 @@ class Obj {
       this.objSon.push([this.pos.x, this.pos.y]);
     }
 
-    this.rad = width / 35;
+    this.rad = width / 60;
     this.isHover = false;
     this.isDragging = false;
   }
